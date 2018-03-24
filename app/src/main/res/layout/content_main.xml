@@ -8,7 +8,6 @@
     tools:context="com.example.neyro.test2.MainActivity"
     tools:showIn="@layout/activity_main">
 
-    
     <EditText
         android:id="@+id/Input"
         android:layout_width="wrap_content"

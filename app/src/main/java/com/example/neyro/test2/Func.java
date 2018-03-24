@@ -19,6 +19,7 @@ public class Func {
     public double From=-20;
     public double To=20;
     public double Step=1;
+    public boolean IsDraw = true;
     public DataPoint[] Points;
 
     public Func(int _id, String _func)
