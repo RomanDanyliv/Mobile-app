@@ -15,7 +15,7 @@ public class Func {
 
     public int ID=0;
     public String Function;
-    public int DrawColor;
+    public int DrawColor=Integer.MIN_VALUE;
     public double From=-20;
     public double To=20;
     public double Step=1;
