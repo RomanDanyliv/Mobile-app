@@ -90,12 +90,10 @@ public class MainActivity extends AppCompatActivity {
         {
             //nav
             NavigationView side = (NavigationView) findViewById(R.id.sideMenu);
-            //get func
-            EditText input = (EditText) findViewById(R.id.Input);
             //menu from nav
             Menu sideMenu = side.getMenu();
             sideMenu.clear();
-            MenuItem mi = side.getMenu().add(Menu.NONE, Menu.NONE, Menu.NONE, input.getText().toString().toUpperCase());
+            MenuItem mi = side.getMenu().add(Menu.NONE, Menu.NONE, Menu.NONE, item.Function.toUpperCase());
             //crete linear
             mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
