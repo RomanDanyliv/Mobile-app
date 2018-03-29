@@ -25,7 +25,8 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_toRightOf="@+id/Input"
-        android:src="@mipmap/ic_calculate_round" />
+        android:src="@mipmap/ic_calculate_round"
+        android:background="@null"/>
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"

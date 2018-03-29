@@ -14,9 +14,10 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:srcCompat="@mipmap/ic_icon_main" />
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        app:srcCompat="@mipmap/ic_icon_main"
+        android:background="@null" />
 
     <TextView
         android:layout_width="match_parent"
