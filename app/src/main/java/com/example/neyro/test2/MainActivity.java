@@ -1,10 +1,12 @@
 package com.example.neyro.test2;
 
+import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -18,6 +20,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -27,7 +30,7 @@ import com.jjoe64.graphview.series.LineGraphSeries;
 
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
-    int Counter;
+    int Counter=0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,14 +39,14 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
+//        fab.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
+//                        .setAction("Action", null).show();
+//            }
+//        });
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -55,7 +58,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         ///////////////////////////////////////////////////////
-        Button btn = (Button) findViewById(R.id.Button);
+        ImageButton btn = (ImageButton) findViewById(R.id.Calculate);
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -87,13 +90,12 @@ public class MainActivity extends AppCompatActivity
         sideMenu.clear();
         for(Func item:FuncManager.AllFunctions)
         {
-            MenuItem mi = side.getMenu().add(Menu.NONE, Menu.NONE, Menu.NONE, item.Function.toUpperCase());
+            MenuItem mi = side.getMenu().add(item.ID, item.ID, item.ID, item.Function.toUpperCase());
             //crete linear
             mi.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
                 @Override
                 public boolean onMenuItemClick(MenuItem menuItem) {
-                    int id = menuItem.getActionView().getId();
-                    ((TextView) findViewById(R.id.Result)).setText(String.valueOf(id));
+                    int id = menuItem.getItemId();
                     Intent intent = new Intent("Graph.Setting");
                     intent.putExtra("id", id);
                     startActivityForResult(intent,1);

@@ -20,34 +20,17 @@
         tools:layout_editor_absoluteX="53dp"
         tools:layout_editor_absoluteY="102dp" />
 
-    <Button
-        android:id="@+id/Button"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Input"
-        android:layout_alignStart="@+id/Input"
-        android:layout_below="@+id/Input"
-        android:layout_marginTop="14dp"
-        android:text="Button"
-        tools:layout_editor_absoluteX="115dp"
-        tools:layout_editor_absoluteY="186dp" />
-
-    <TextView
-        android:id="@+id/Result"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button"
-        android:layout_alignBottom="@+id/Button"
-        android:layout_alignEnd="@+id/Input"
-        android:layout_alignRight="@+id/Input"
-        android:text="TextView"
-        tools:layout_editor_absoluteX="130dp"
-        tools:layout_editor_absoluteY="278dp" />
+    <ImageButton
+        android:id="@+id/Calculate"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_toRightOf="@+id/Input"
+        android:src="@mipmap/ic_calculate_round" />
 
     <com.jjoe64.graphview.GraphView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/graph"
-        android:layout_below="@+id/Result"/>
+        android:layout_below="@+id/Calculate"/>
 
 </RelativeLayout>

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Test2</string>
+    <string name="app_name">Graph Draw</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_graph_settings">Graph Settings</string>
 

@@ -28,12 +28,13 @@ public class GraphActivity extends AppCompatActivity {
         ((Button) findViewById(R.id.Save)).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                FuncManager.AllFunctions.get(id).Function=((EditText) findViewById(R.id.FuncName)).getText().toString();
-                FuncManager.AllFunctions.get(id).DrawColor=Integer.valueOf(((EditText) findViewById(R.id.Color)).getText().toString());
-                FuncManager.AllFunctions.get(id).From=Double.valueOf(((EditText) findViewById(R.id.From)).getText().toString());
-                FuncManager.AllFunctions.get(id).To=Double.valueOf(((EditText) findViewById(R.id.To)).getText().toString());
-                FuncManager.AllFunctions.get(id).Step=Double.valueOf(((EditText) findViewById(R.id.Step)).getText().toString());
-                FuncManager.AllFunctions.get(id).Calculate();
+                Func func = FuncManager.FindById(id);
+                func.Function=((EditText) findViewById(R.id.FuncName)).getText().toString();
+                func.DrawColor=Integer.valueOf(((EditText) findViewById(R.id.Color)).getText().toString());
+                func.From=Double.valueOf(((EditText) findViewById(R.id.From)).getText().toString());
+                func.To=Double.valueOf(((EditText) findViewById(R.id.To)).getText().toString());
+                func.Step=Double.valueOf(((EditText) findViewById(R.id.Step)).getText().toString());
+                func.Calculate();
                 setResult(1);
                 finish();
             }
@@ -42,6 +43,7 @@ public class GraphActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Func func = new Func();
+                func.ID = FuncManager.AllFunctions.size();
                 func.Function=((EditText) findViewById(R.id.FuncName)).getText().toString();
                 func.DrawColor=Integer.valueOf(((EditText) findViewById(R.id.Color)).getText().toString());
                 func.From=Double.valueOf(((EditText) findViewById(R.id.From)).getText().toString());
@@ -49,6 +51,14 @@ public class GraphActivity extends AppCompatActivity {
                 func.Step=Double.valueOf(((EditText) findViewById(R.id.Step)).getText().toString());
                 func.Calculate();
                 FuncManager.AllFunctions.add(func);
+                setResult(1);
+                finish();
+            }
+        });
+        ((Button) findViewById(R.id.Remove)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                FuncManager.AllFunctions.remove(FuncManager.FindById(id));
                 setResult(1);
                 finish();
             }

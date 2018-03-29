@@ -9,4 +9,13 @@ import java.util.ArrayList;
 public class FuncManager {
     public static final FuncManager INSTANCE = new FuncManager();
     public static ArrayList<Func> AllFunctions = new ArrayList<Func>();
+    public static Func FindById(int id)
+    {
+        for (Func item : AllFunctions)
+        {
+            if (item.ID==id)
+                return item;
+        }
+        return null;
+    }
 }
