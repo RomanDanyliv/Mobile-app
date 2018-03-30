@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.Spinner;
 
 public class ParserSettings extends AppCompatActivity {
@@ -42,9 +44,9 @@ public class ParserSettings extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 Math_parser.Accuracy = Integer.valueOf(getResources().getStringArray(R.array.Accuracy)[i]);
-                if (i==0)
-                    Math_parser.Degrees_or_radian=1;
-                else Math_parser.Degrees_or_radian=0;
+                if (i == 0)
+                    Math_parser.Degrees_or_radian = 1;
+                else Math_parser.Degrees_or_radian = 0;
             }
 
             @Override
@@ -52,5 +54,18 @@ public class ParserSettings extends AppCompatActivity {
             }
         };
         type.setOnItemSelectedListener(spinerListener2);
+
+        ((Button) findViewById(R.id.Back)).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                try {
+                    Math_parser.Step = Integer.valueOf(((EditText) findViewById(R.id.Step)).getText().toString());
+                } catch (NumberFormatException e) {
+                    e.printStackTrace();
+                }
+                finish();
+            }
+        });
+        ((EditText) findViewById(R.id.Step)).setText(String.valueOf(Math_parser.Step));
     }
 }

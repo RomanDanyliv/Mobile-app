@@ -18,7 +18,7 @@ public class Func {
     public int DrawColor=Integer.MIN_VALUE;
     public double From=-20;
     public double To=20;
-    public double Step=1;
+    public double Step=1.0;
     public boolean IsDraw = true;
     public DataPoint[] Points;
 
@@ -26,6 +26,7 @@ public class Func {
     {
         ID = _id;
         Function = _func;
+        Step = Math_parser.Step;
     }
 
     public Func()

@@ -12,6 +12,7 @@ public class Math_parser {
     private static char[] Operations_array = {'^', '/', '*', '+', '-'};
     public static int Degrees_or_radian = 0;
     public static int Accuracy=1;
+    public static double Step=1.0;
 
   /*  public static void main(String[] args) {
         System.out.println("Print 'exit' to exit program");
