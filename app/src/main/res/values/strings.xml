@@ -93,4 +93,10 @@
         <item>Degree</item>
         <item>Radians</item>
     </string-array>
+
+    <string-array name="IntType">
+        <item>Simpson method</item>
+        <item>Rectangles method</item>
+        <item>Trapezium method</item>
+    </string-array>
 </resources>

@@ -181,6 +181,11 @@ public class MainActivity extends AppCompatActivity
             startActivity(intent);
             return true;
         }
+        if (id == R.id.Integral) {
+            Intent intent = new Intent("Integral");
+            startActivity(intent);
+            return true;
+        }
 
         return super.onOptionsItemSelected(item);
     }

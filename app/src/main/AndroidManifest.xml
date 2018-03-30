@@ -33,7 +33,15 @@
                 <action android:name="Parser.Setting" />
 
                 <category android:name="android.intent.category.DEFAULT" />
-            </intent-filter></activity>
+            </intent-filter>
+        </activity>
+        <activity android:name=".Integral">
+            <intent-filter>
+                <action android:name="Integral" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>
