@@ -38,7 +38,7 @@
             android:text="Color:"
             android:textAlignment="center" />
 
-        <EditText
+        <Button
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"

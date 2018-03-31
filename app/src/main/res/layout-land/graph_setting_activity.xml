@@ -45,11 +45,11 @@
                 android:text="Color:"
                 android:textAlignment="center" />
 
-            <EditText
-                android:id="@+id/Color"
+            <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1" />
+                android:layout_weight="1"
+                android:id="@+id/Color"/>
         </LinearLayout>
 
         <LinearLayout
