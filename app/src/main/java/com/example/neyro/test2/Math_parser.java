@@ -1,4 +1,5 @@
 package com.example.neyro.test2;
+
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
@@ -11,8 +12,8 @@ public class Math_parser {
     private static String[] Functions_array = {"ABS", "SQRT", "SQR", "EBP", "LN", "ARCSIN", "ARCCOS", "SIN", "COS", "ARCTAN", "COTAN", "TAN", "LG"};
     private static char[] Operations_array = {'^', '/', '*', '+', '-'};
     public static int Degrees_or_radian = 0;
-    public static int Accuracy=1;
-    public static double Step=1.0;
+    public static int Accuracy = 1;
+    public static double Step = 1.0;
 
   /*  public static void main(String[] args) {
         System.out.println("Print 'exit' to exit program");
@@ -54,6 +55,8 @@ public class Math_parser {
 
     static double Evaluate(String f, double X) throws Exception {
         String str;
+        if (Math.abs(X) < 0.000001)
+            X = 0.0;
         int i = 0, p;
         f = Format_string(f);
         str = Insert_X(f.toUpperCase(), X);
@@ -167,20 +170,15 @@ public class Math_parser {
                                 Result = Float.toString(0);
                             if (Math.abs(Second_value) == 0)
                                 Result = Float.toString(1);
-                            if ((First_value > 0) && (Second_value > 0)) {
+                            if ((First_value > 0)) {
                                 Third_value = Math.pow(First_value, Second_value);
                                 Result = Double.toString(Third_value);
                             }
-                            if ((First_value < 0) && (Second_value < 0)) {
+                            if ((First_value < 0)) {
                                 Third_value = Math.pow(Math.abs(First_value), Second_value);
-                                Result = '-' + Double.toString(Third_value);
-                            }
-                            if (((First_value > 0) && (Second_value < 0)) || ((First_value < 0) && (Second_value > 0))) {
-                                Third_value = Math.pow(First_value, Second_value);
-                                if (((Second_value.intValue()) % 2 > 0) || (Third_value < 0))
+                                if (Second_value % 2 != 0)
                                     Result = '-' + Double.toString(Third_value);
-                                else
-                                    Result = Double.toString(Third_value);
+                                else Result = Double.toString(Third_value);
                             }
                         } catch (Exception e) {
                             System.out.print("ERROR");
@@ -242,7 +240,7 @@ public class Math_parser {
         String operators = new String(Operations_array);
         int Replace_length = str1.length();
         String Operations = new String(Operations_array);
-        for (k = 0; k < operation.length - 1; k++)
+        for (k = 0; k < operation.length; k++)
             str1 = Evaluate_operation(str1, operation[k]);
         str = new StringBuilder(str).replace(pos2, pos2 + Replace_length + Brackets, str1).toString();
         str = Remove_symbols(str);
@@ -305,7 +303,7 @@ public class Math_parser {
                 str1 = Open_brackets(str1, operation);
                 float Returned_value = Float.parseFloat(str1);
 
-                if (Degrees_or_radian == 0 && (k>4 && k<12)) {
+                if (Degrees_or_radian == 0 && (k > 4 && k < 12)) {
                     Returned_value = (float) Math.toRadians(Returned_value);
                 }
                 try {
@@ -377,7 +375,8 @@ public class Math_parser {
                         str = new StringBuilder(str).replace(position0 - 1, position2 + 1, "-" + String.valueOf(value)).toString();
                     else
                         str = new StringBuilder(str).replace(position0, position2 + 1, String.valueOf(value)).toString();
-                } else str = new StringBuilder(str).replace(position0, position2 + 1, String.valueOf(value)).toString();
+                } else
+                    str = new StringBuilder(str).replace(position0, position2 + 1, String.valueOf(value)).toString();
             }
         }
         for (k = 0; k < func.length; k++) {
@@ -396,47 +395,4 @@ public class Math_parser {
         return str;
     }
 
-    public static byte[] toByteArray(Object obj) throws IOException {
-        byte[] bytes = null;
-        ByteArrayOutputStream bos = null;
-        ObjectOutputStream oos = null;
-        try {
-            bos = new ByteArrayOutputStream();
-            oos = new ObjectOutputStream(bos);
-            oos.writeObject(obj);
-            oos.flush();
-            bytes = bos.toByteArray();
-        } finally {
-            if (oos != null) {
-                oos.close();
-            }
-            if (bos != null) {
-                bos.close();
-            }
-        }
-        return bytes;
-    }
-
-    public static Func toObject(byte[] bytes) throws IOException, ClassNotFoundException {
-        Func obj = null;
-        ByteArrayInputStream bis = null;
-        ObjectInputStream ois = null;
-        try {
-            bis = new ByteArrayInputStream(bytes);
-            ois = new ObjectInputStream(bis);
-            obj = (Func) ois.readObject();
-        } finally {
-            if (bis != null) {
-                bis.close();
-            }
-            if (ois != null) {
-                ois.close();
-            }
-        }
-        return obj;
-    }
-
-    public static String toString(byte[] bytes) {
-        return new String(bytes);
-    }
 }

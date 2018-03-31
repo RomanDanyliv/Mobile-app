@@ -2,11 +2,14 @@ package com.example.neyro.test2;
 
 import android.arch.lifecycle.OnLifecycleEvent;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.hardware.SensorManager;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.view.Gravity;
 import android.view.MotionEvent;
+import android.view.OrientationEventListener;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -32,12 +35,22 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     int Counter=0;
 
+    OrientationEventListener mOrientationListener;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+
+        mOrientationListener = new OrientationEventListener(this,
+                SensorManager.SENSOR_DELAY_NORMAL) {
+            @Override
+            public void onOrientationChanged(int arg0) {
+                Menu_Refresh();
+            }};
+        mOrientationListener.enable();
+
 
 //        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
 //        fab.setOnClickListener(new View.OnClickListener() {
@@ -69,7 +82,7 @@ public class MainActivity extends AppCompatActivity
                 int CurrentCounter = Counter++;
                 //get func
                 EditText input = (EditText) findViewById(R.id.Input);
-                Func function = new Func(CurrentCounter, input.getText().toString());
+                Func function = new Func(CurrentCounter, input.getText().toString().toUpperCase());
                 FuncManager.AllFunctions.add(function);
                 function.Calculate();
                 Menu_Refresh();

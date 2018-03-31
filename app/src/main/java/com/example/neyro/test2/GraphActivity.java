@@ -43,7 +43,7 @@ public class GraphActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Func func = new Func();
-                func.ID = FuncManager.AllFunctions.size();
+                func.ID = FuncManager.GetLasst().ID+1;
                 func.Function=((EditText) findViewById(R.id.FuncName)).getText().toString();
                 func.DrawColor=Integer.valueOf(((EditText) findViewById(R.id.Color)).getText().toString());
                 func.From=Double.valueOf(((EditText) findViewById(R.id.From)).getText().toString());

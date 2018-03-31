@@ -18,4 +18,8 @@ public class FuncManager {
         }
         return null;
     }
+
+    public static Func GetLasst() {
+        return AllFunctions.get(AllFunctions.size()-1);
+    }
 }
